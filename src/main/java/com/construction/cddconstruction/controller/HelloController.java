@@ -1,23 +1,16 @@
 package com.construction.cddconstruction.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HelloController {
 
     @GetMapping("/")
-    public String home() {
-        return "🏗️ Construction App Backend is Running! ✅";
-    }
-
-    @GetMapping("/api/test")
-    public String apiTest() {
-        return "API is working perfectly! 🚀";
-    }
-
-    @GetMapping("/api/status")
-    public String status() {
-        return "Backend Status: ONLINE ✅";
+    public String home(Authentication authentication, Model model) {
+        model.addAttribute("username", authentication.getName());
+        return "index";
     }
 }

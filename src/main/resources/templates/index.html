@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDD Construction - Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .logout-btn:hover {
+            background-color: #da190b;
+        }
+        .container {
+            padding: 2rem;
+        }
+        .welcome-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .action-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .action-card h3 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .action-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        .action-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏗️ CDD Construction</h1>
+        <div class="user-info">
+            <span>Welcome, <strong th:text="${username}"></strong>!</span>
+            <form th:action="@{/logout}" method="post" style="margin: 0;">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="welcome-card">
+            <h2>File Management System</h2>
+            <p>Manage your construction project files and directories. Upload, organize, and access your documents securely.</p>
+        </div>
+
+        <div class="actions">
+            <div class="action-card">
+                <h3>📁 Directory Management</h3>
+                <p>Create and organize project directories</p>
+                <a href="/api/directories" class="action-btn">Manage Directories</a>
+            </div>
+
+            <div class="action-card">
+                <h3>📄 File Upload</h3>
+                <p>Upload and manage project files</p>
+                <a href="/api/files" class="action-btn">Manage Files</a>
+            </div>
+
+            <div class="action-card">
+                <h3>💾 Database Console</h3>
+                <p>Access H2 database console for development</p>
+                <a href="/h2-console" class="action-btn" target="_blank">H2 Console</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
